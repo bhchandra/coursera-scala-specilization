@@ -117,8 +117,24 @@ import org.scalatest.junit.JUnitRunner
     assert(sum(List(1,2,0)) === 3)
   }
 
+  test("more tests on sum with negative numbers, zeros, empty lists, lists with repeated elements") {
+    assert(sum(List(1, 1, 1)) === 3)
+    assert(sum(List(-2, -2, -3)) === -7)
+    assert(sum(List(-2, 1, 1)) === 0)
+    assert(sum(List()) === 0)
+  }
+
   test("max of a few numbers") {
     assert(max(List(3, 7, 2)) === 7)
+  }
+
+  test("more tests on max with negative numbers, zeros, empty lists, lists with repeated elements") {
+    assert(max(List(1, 1, 1)) === 1)
+    assert(max(List(-2, -2, -3)) === -2)
+    assert(max(List(-2, 1, 1)) === 1)
+    intercept[UnsupportedOperationException] {
+      max(List())
+    }
   }
 
 

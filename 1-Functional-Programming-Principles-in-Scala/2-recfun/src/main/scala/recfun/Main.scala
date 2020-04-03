@@ -15,12 +15,31 @@ object Main {
   /**
    * Exercise 1
    */
-  def pascal(c: Int, r: Int): Int = ???
+  def pascal(c: Int, r: Int): Int = {
+    def loop(c: Int, r: Int): Int = {
+      if (c == 0 || c == r) 1
+      else loop(c - 1, r - 1) + loop(c, r - 1)
+    }
+
+    loop(c, r)
+  }
 
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
+  def balance(chars: List[Char]): Boolean = {
+
+    @tailrec
+    def helper(chars: List[Char], sum: Int): Boolean = {
+      if (sum < 0) false
+      else if (chars.isEmpty) sum == 0
+      else if (chars.head == '(') helper(chars.tail, sum + 1)
+      else if (chars.head == ')') helper(chars.tail, sum - 1)
+      else helper(chars.tail, sum)
+    }
+
+    helper(chars, 0)
+  }
 
   /**
    * Exercise 3
